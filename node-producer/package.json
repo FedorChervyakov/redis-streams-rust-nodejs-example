@@ -1,5 +1,14 @@
 {
-  "dependencies": {
-    "redis": "^4.0.4"
-  }
+    "name": "redis_stream_docker_example",
+    "version": "1.0.0",
+    "description": "",
+    "author": "First Last <first.last@example.com>",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "redis": "^4.0.4"
+    }
 }

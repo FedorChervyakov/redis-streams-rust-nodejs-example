@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:6.2.6-alpine
+    env_file:
+      - .env
+    expose:
+      - "6379"
+    command: redis-server --requirepass "${REDIS_PASSWORD}"
+    volumes:
+      - redis_data:/data
+  
+  node-producer:
+    build:
+      context: ./node-producer
+      dockerfile: Dockerfile.node
+    depends_on:
+      - redis
+    command: node app.js
+
+volumes:
+  redis_data:
