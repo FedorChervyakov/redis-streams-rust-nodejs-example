@@ -14,7 +14,6 @@ services:
   node-producer:
     build:
       context: ./node-producer
-      dockerfile: Dockerfile.node
     depends_on:
       - redis
     command: node app.js
@@ -22,7 +21,6 @@ services:
   rust-consumer:
     build:
       context: ./rust-client
-      dockerfile: Dockerfile
     depends_on:
       - redis
       - node-producer
