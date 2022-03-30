@@ -19,5 +19,14 @@ services:
       - redis
     command: node app.js
 
+  rust-consumer:
+    build:
+      context: ./rust-client
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - node-producer
+    command: rust-client
+
 volumes:
   redis_data:
