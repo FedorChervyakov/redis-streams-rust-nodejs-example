@@ -9,12 +9,18 @@ import { createClient } from 'redis';
 
     await client.connect();
 
-    await client.xAdd("mystream", "*", "name", "Sara", "surname", "OConnor");
-    await client.xAdd("mystream", "*", "name", "Fedor", "surname", "Chervyakov");
+    await client.xAdd("mystream", "*", {
+        name: "Sara",
+        surname: "OConnor",
+    });
+    await client.xAdd("mystream", "*", {
+        name: "Fedor",
+        surname: "Chervyakov",
+    });
 
     const l = await client.xLen("mystream");
 
     console.log(l);
 
-    await client.disconnect();
+    await client.quit();
 })();
